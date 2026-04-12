@@ -53,10 +53,10 @@
             <sql-placeholder>SELECT name, distance FROM Airport WHERE ... ORDER BY ...</sql-placeholder>
         </select-scene>
         <text-scene>
-            <text>Geneva Cointrin, only 224 km away! You bank the plane hard to the left and begin your descent. Sandra uses her navigation skills to guide you, while Lina keeps the engines running with her mechanics know-how. The runway appears through the clouds...</text>
+            <text>George F.L. Charles Airport on Saint Lucia, only 224 km away! You bank the plane hard to the left and begin your descent. Sandra uses her navigation skills to guide you, while Lina keeps the engines running with her mechanics know-how. The runway appears through the clouds...</text>
         </text-scene>
         <text-scene>
-            <text>TOUCHDOWN! The passengers erupt in cheers as you bring the Airbus to a stop on the Geneva tarmac. You&#x27;ve escaped SQL Island! Arthur is rushed to the hospital and makes a full recovery. Congratulations, Captain!</text>
+            <text>TOUCHDOWN! The passengers erupt in cheers as you bring the Airbus to a stop on the tarmac on Saint Lucia. You&#x27;ve escaped SQL Island! Arthur is rushed to the hospital and makes a full recovery. Congratulations, Captain!</text>
         </text-scene>
     </scenes>
     <initial-sql-script>CREATE TABLE Passenger (
@@ -130,12 +130,12 @@ VALUES
 
 INSERT INTO Airport (name, distance)
 VALUES
-(&#x27;Zurich Kloten&#x27;, 0),
-(&#x27;Geneva Cointrin&#x27;, 224),
-(&#x27;Vienna Schwechat&#x27;, 612),
-(&#x27;Frankfurt Main&#x27;, 305),
-(&#x27;Rome Fiumicino&#x27;, 688),
-(&#x27;Barcelona El Prat&#x27;, 843),
-(&#x27;Amsterdam Schiphol&#x27;, 621),
-(&#x27;Lisbon Portela&#x27;, 1860);</initial-sql-script>
+(&#x27;SQL Island&#x27;, 0),
+(&#x27;G.F.L. Charles&#x27;, 224),
+(&#x27;Maurice Bishop&#x27;, 612),
+(&#x27;Princess Juliana&#x27;, 305),
+(&#x27;Piarco&#x27;, 688),
+(&#x27;Argyle Internati.&#x27;, 843),
+(&#x27;Clayton J. Lloyd&#x27;, 621),
+(&#x27;Miami Internat.&#x27;, 1860);</initial-sql-script>
 </game>
