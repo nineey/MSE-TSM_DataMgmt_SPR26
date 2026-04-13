@@ -69,11 +69,11 @@ VALUES
 
 INSERT INTO Airport (name, distance)
 VALUES
-('Zurich Kloten', 0),
-('Geneva Cointrin', 224),
-('Vienna Schwechat', 612),
-('Frankfurt Main', 305),
-('Rome Fiumicino', 688),
-('Barcelona El Prat', 843),
-('Amsterdam Schiphol', 621),
-('Lisbon Portela', 1860);
+('SQL Island', 0),
+('G.F.L. Charles', 224),
+('Maurice Bishop', 612),
+('Princess Juliana', 305),
+('Piarco', 688),
+('Argyle Internati.', 843),
+('Clayton J. Lloyd', 621),
+('Miami Internat.', 1860);
