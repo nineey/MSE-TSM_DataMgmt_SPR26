@@ -56,7 +56,26 @@
             <text>George F.L. Charles Airport on Saint Lucia, only 224 km away! You bank the plane hard to the left and begin your descent. Sandra uses her navigation skills to guide you, while Lina keeps the engines running with her mechanics know-how. The runway appears through the clouds...</text>
         </text-scene>
         <text-scene>
-            <text>TOUCHDOWN! The passengers erupt in cheers as you bring the Airbus to a stop on the tarmac on Saint Lucia. You&#x27;ve escaped SQL Island! Arthur is rushed to the hospital and makes a full recovery. Congratulations, Captain!</text>
+            <text>TOUCHDOWN! You&#x27;ve landed the Airbus safely on Saint Lucia! The passengers erupt in cheers. Arthur is rushed to hospital. But the paperwork has only just begun...</text>
+        </text-scene>
+        <text-scene>
+            <text>The airline&#x27;s insurance team rushes over with clipboards. They need a financial breakdown of the passengers immediately - specifically how passengers with useful skills compare financially to those without.</text>
+        </text-scene>
+        <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
+            <text>Calculate the total and average money for passengers WITH a skill and for those WITHOUT a skill. Use SUM() and AVG() with the FILTER clause! Name the columns: skilled_total, skilled_avg, unskilled_total, unskilled_avg</text>
+            <sql-solution>SELECT SUM(money) FILTER (WHERE skill IS NOT NULL) AS skilled_total, AVG(money) FILTER (WHERE skill IS NOT NULL) AS skilled_avg, SUM(money) FILTER (WHERE skill IS NULL) AS unskilled_total, AVG(money) FILTER (WHERE skill IS NULL) AS unskilled_avg FROM Passenger</sql-solution>
+            <sql-placeholder>SELECT SUM(...) FILTER (...) AS skilled_total, AVG(...) FILTER (...) AS skilled_avg, SUM(...) FILTER (...) AS unskilled_total, AVG(...) FILTER (...) AS unskilled_avg FROM Passenger</sql-placeholder>
+        </select-scene>
+        <text-scene>
+            <text>Insurance report submitted! Now the Saint Lucia airport authority wants a fleet-wide meal safety audit. They need to know, for every plane in the fleet, how many meals are allergen-free versus potentially dangerous.</text>
+        </text-scene>
+        <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
+            <text>For each plane, show the planeid and count: total meals, how many are safe for all (contains IS NULL), and how many contain allergens (contains IS NOT NULL). Use FILTER together with GROUP BY! Name the columns: planeid, total_meals, safe_meals, allergen_meals</text>
+            <sql-solution>SELECT planeid, COUNT(*) AS total_meals, COUNT(*) FILTER (WHERE contains IS NULL) AS safe_meals, COUNT(*) FILTER (WHERE contains IS NOT NULL) AS allergen_meals FROM Meal GROUP BY planeid ORDER BY planeid</sql-solution>
+            <sql-placeholder>SELECT planeid, COUNT(*) AS total_meals, COUNT(*) FILTER (...) AS safe_meals, COUNT(*) FILTER (...) AS allergen_meals FROM Meal GROUP BY planeid ORDER BY planeid</sql-placeholder>
+        </select-scene>
+        <text-scene>
+            <text>Fleet safety report filed! Arthur makes a full recovery at hospital. The whole crew is hailed as heroes. You&#x27;ve not only escaped SQL Island - you&#x27;ve mastered the FILTER clause! Congratulations, Captain!</text>
         </text-scene>
     </scenes>
     <initial-sql-script>CREATE TABLE Passenger (
