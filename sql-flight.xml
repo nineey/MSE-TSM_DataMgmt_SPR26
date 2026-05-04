@@ -19,17 +19,17 @@
             <sql-placeholder>SELECT * FROM ...</sql-placeholder>
         </select-scene>
         <text-scene>
-            <text>Good work — now you know who is waiting on the runway! The flight costs at least 1000 coins per person, and you want passengers who bring useful skills for the journey. Let&#x27;s check who qualifies.</text>
+            <text>Good work — now you know who is waiting on the runway! The plane has two cabins: first class for passengers with enough money and a useful skill, second class for the rest. Let&#x27;s find out who gets the upgrade.</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="false">
             <text>Table: `passenger`
 
-Find all passengers who can afford the trip (`money` &gt;= 1000) AND have a skill. Remember to check the 'Schema' below.</text>
+Find all passengers who qualify for first class: `money` &gt;= 1000 AND a skill. Remember to check the 'Schema' below.</text>
             <sql-solution>SELECT * FROM passenger WHERE money &gt;= 1000 AND skill IS NOT NULL</sql-solution>
             <sql-placeholder>SELECT * FROM passenger WHERE ...</sql-placeholder>
         </select-scene>
         <text-scene>
-            <text>Excellent! Marco, Sandra, Lina, Julia, and Aisha are boarding. The Airbus A320 roars to life and you take off from SQL Island!</text>
+            <text>Excellent! Marco, Sandra, Lina, Julia, and Aisha take the first class seats. Tomas, Reto, and Niklas settle into second class. The Airbus A320 roars to life and you take off from SQL Island!</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
             <text>Table: `passenger`
