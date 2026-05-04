@@ -106,6 +106,15 @@ For each plane, show the `planeid` and count: total meals, how many are safe for
         <text-scene>
             <text>Fleet safety report filed! Arthur makes a full recovery at hospital. The whole crew is hailed as heroes. You&#x27;ve not only escaped SQL Island - you&#x27;ve mastered the FILTER clause! Congratulations, Captain!</text>
         </text-scene>
+        <text-scene>
+            <text>You have successfully applied the FILTER clause to solve real problems under pressure:
+- counting conditional subsets with COUNT(*) FILTER (WHERE ...)
+- computing conditional totals and averages with SUM() and AVG() FILTER (WHERE ...)
+- finding conditional extremes with MIN() FILTER (WHERE ...)
+- combining FILTER with GROUP BY to analyse data per group
+
+You learned to aggregate selectively and turning a single query into multiple targeted insights at once.</text>
+        </text-scene>
     </scenes>
     <initial-sql-script>CREATE TABLE passenger (
     passengerid SERIAL PRIMARY KEY,
