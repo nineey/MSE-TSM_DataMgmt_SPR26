@@ -67,13 +67,13 @@ Emergency check! Count how many airports are reachable (`distance` &gt; 0 AND `d
         <text-scene>
             <text>Nice work! 5 airports are within range, 2 are too far. But which one is closest? Find the minimum distance before committing to a heading!</text>
         </text-scene>
-        <select-scene is-row-order-relevant="true" is-col-order-relevant="false" are-col-names-relevant="false">
+        <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="false">
             <text>Table: `airport`
 Syntax: MIN(column) FILTER (WHERE condition)
 
-Find the shortest distance to any reachable airport (`distance` &gt; 0 AND `distance` &lt;= 700). Name the column: `nearest_distance`</text>
-            <sql-solution>SELECT MIN(distance) FILTER (WHERE distance &gt; 0 AND distance &lt;= 700) AS nearest_distance FROM airport</sql-solution>
-            <sql-placeholder>SELECT MIN(...) FILTER (...) AS nearest_distance FROM airport</sql-placeholder>
+Find the `name` and `distance` of the nearest reachable airport (`distance` &gt; 0 AND `distance` &lt;= 700). Hint: use a subquery with MIN() FILTER to match the airport row.</text>
+            <sql-solution>SELECT name, distance FROM airport WHERE distance = (SELECT MIN(distance) FILTER (WHERE distance &gt; 0 AND distance &lt;= 700) FROM airport)</sql-solution>
+            <sql-placeholder>SELECT name, distance FROM airport WHERE distance = (SELECT MIN(...) FILTER (...) FROM airport)</sql-placeholder>
         </select-scene>
         <text-scene>
             <text>Perfect — you found it! George F.L. Charles Airport on Saint Lucia, only 224 km away! You bank the plane hard to the left and begin your descent. Sandra uses her navigation skills to guide you, while Lina keeps the engines running with her mechanics know-how. The runway appears through the clouds...</text>
@@ -111,6 +111,7 @@ For each plane, show the `planeid` and count: total meals, how many are safe for
 - counting conditional subsets with COUNT(*) FILTER (WHERE ...)
 - computing conditional totals and averages with SUM() and AVG() FILTER (WHERE ...)
 - finding conditional extremes with MIN() FILTER (WHERE ...)
+- using FILTER inside subqueries to match rows against a conditional aggregate
 - combining FILTER with GROUP BY to analyse data per group
 
 You learned to aggregate selectively and turning a single query into multiple targeted insights at once.</text>
