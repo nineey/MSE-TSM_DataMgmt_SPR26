@@ -1,7 +1,7 @@
 CREATE TABLE passenger (
     passengerid SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    money INTEGER NOT NULL,
+    money INTEGER NOT NULL CHECK (money >= 0),
     skill TEXT,
     allergy TEXT
 );
@@ -20,7 +20,7 @@ CREATE TABLE plane (
     cabin_pressure_max NUMERIC(4,2) NOT NULL,
     speed INTEGER NOT NULL,
     speed_min INTEGER NOT NULL,
-    speed_max INTEGER NOT NULL
+    speed_max INTEGER NOT NULL,
 );
 
 CREATE TABLE meal (
@@ -34,7 +34,7 @@ CREATE TABLE meal (
 CREATE TABLE airport (
     airportid SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    distance INTEGER NOT NULL
+    distance INTEGER NOT NULL CHECK (distance >= 0)
 );
 
 INSERT INTO passenger (name, money, skill, allergy)
