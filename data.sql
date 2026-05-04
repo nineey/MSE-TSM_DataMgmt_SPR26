@@ -20,7 +20,7 @@ CREATE TABLE plane (
     cabin_pressure_max NUMERIC(4,2) NOT NULL,
     speed INTEGER NOT NULL,
     speed_min INTEGER NOT NULL,
-    speed_max INTEGER NOT NULL,
+    speed_max INTEGER NOT NULL
 );
 
 CREATE TABLE meal (
