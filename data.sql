@@ -45,7 +45,7 @@ VALUES
 ('Lina Fischer', 5200, 'mechanics', NULL),
 ('Reto Ammann', 150, 'cooking', 'dairy'),
 ('Julia Hartmann', 2750, 'first aid', 'shellfish'),
-('Niklas Stein', 960, NULL, NULL),
+('Niklas Stein', 1100, NULL, NULL),
 ('Aisha Mirza', 4100, 'electronics', 'eggs');
 
 INSERT INTO plane (model, fuel_level, fuel_min, fuel_max, altitude, altitude_min, altitude_max, cabin_pressure, cabin_pressure_min, cabin_pressure_max, speed, speed_min, speed_max)
