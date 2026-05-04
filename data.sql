@@ -1,4 +1,4 @@
-CREATE TABLE Passenger (
+CREATE TABLE passenger (
     passengerid SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     money INTEGER NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE Passenger (
     allergy TEXT
 );
 
-CREATE TABLE Plane (
+CREATE TABLE plane (
     planeid SERIAL PRIMARY KEY,
     model TEXT NOT NULL,
     fuel_level NUMERIC(5,2) NOT NULL,
@@ -23,21 +23,21 @@ CREATE TABLE Plane (
     speed_max INTEGER NOT NULL
 );
 
-CREATE TABLE Meal (
+CREATE TABLE meal (
     mealid SERIAL PRIMARY KEY,
     planeid INTEGER NOT NULL
-        REFERENCES Plane(planeid),
+        REFERENCES plane(planeid),
     name TEXT NOT NULL,
     contains TEXT
 );
 
-CREATE TABLE Airport (
+CREATE TABLE airport (
     airportid SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     distance INTEGER NOT NULL
 );
 
-INSERT INTO Passenger (name, money, skill, allergy)
+INSERT INTO passenger (name, money, skill, allergy)
 VALUES
 ('Marco Zeller', 1200, 'first aid', NULL),
 ('Sandra Kluge', 3400, 'navigation', 'gluten'),
@@ -48,13 +48,13 @@ VALUES
 ('Niklas Stein', 960, NULL, NULL),
 ('Aisha Mirza', 4100, 'electronics', 'eggs');
 
-INSERT INTO Plane (model, fuel_level, fuel_min, fuel_max, altitude, altitude_min, altitude_max, cabin_pressure, cabin_pressure_min, cabin_pressure_max, speed, speed_min, speed_max)
+INSERT INTO plane (model, fuel_level, fuel_min, fuel_max, altitude, altitude_min, altitude_max, cabin_pressure, cabin_pressure_min, cabin_pressure_max, speed, speed_min, speed_max)
 VALUES
 ('Airbus A320', 62.50, 10.00, 100.00, 35000, 20000, 42000, 0.85, 0.75, 1.00, 480, 200, 575),
 ('Boeing 737', 45.30, 10.00, 100.00, 31000, 20000, 41000, 0.82, 0.75, 1.00, 460, 200, 544),
 ('Embraer E190', 78.10, 10.00, 100.00, 28000, 15000, 39000, 0.88, 0.75, 1.00, 430, 180, 510);
 
-INSERT INTO Meal (planeid, name, contains)
+INSERT INTO meal (planeid, name, contains)
 VALUES
 (1, 'Grilled Chicken Wrap', 'gluten'),
 (1, 'Vegetable Curry', NULL),
@@ -67,7 +67,7 @@ VALUES
 (3, 'Grilled Tofu Bowl', NULL),
 (3, 'Pancakes with Berries', 'gluten,eggs,dairy');
 
-INSERT INTO Airport (name, distance)
+INSERT INTO airport (name, distance)
 VALUES
 ('SQL Island', 0),
 ('G.F.L. Charles', 224),
