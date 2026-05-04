@@ -29,7 +29,7 @@
             <text>Excellent! Marco, Sandra, Lina, Julia, and Aisha are boarding. The Airbus A320 roars to life and you take off from SQL Island!</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
-            <text>Before serving meals, you need a passenger overview. Count the total number of passengers, how many have a skill, and how many have allergies. Use the FILTER clause!<br>Name the columns: total, with_skill, with_allergy. Hint: the syntax reads FILTER (WHERE ...)</text>
+            <text>Before serving meals, you need a passenger overview. Count the total number of passengers, how many have a skill, and how many have allergies. Use the FILTER clause! Name the columns: total, with_skill, with_allergy. Hint: the syntax reads FILTER (WHERE ...)</text>
             <sql-solution>SELECT COUNT(*) AS total, COUNT(*) FILTER (WHERE skill IS NOT NULL) AS with_skill, COUNT(*) FILTER (WHERE allergy IS NOT NULL) AS with_allergy FROM Passenger</sql-solution>
             <sql-placeholder>SELECT COUNT(*) AS total, COUNT(*) FILTER (...) AS with_skill, COUNT(*) FILTER (...) AS with_allergy FROM Passenger</sql-placeholder>
         </select-scene>
