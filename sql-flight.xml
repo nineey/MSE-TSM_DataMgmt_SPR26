@@ -22,21 +22,21 @@
             <text>Good work — now you know who is waiting on the runway! The plane has two cabins: first class for passengers with enough money and a useful skill, second class for the rest. Let&#x27;s find out who gets the upgrade.</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="false">
-            <text>Table: `passenger`
+            <text>Challenge 1: Table: `passenger`
 
-Find all passengers who qualify for first class: `money` &gt;= 1000 AND a skill. Remember to check the 'Schema' below.</text>
+Find all passengers who qualify for first class: `money` &gt;= 1000 AND a skill. Note that not all passengers have a skill (`skill` is NULL)</text>
             <sql-solution>SELECT * FROM passenger WHERE money &gt;= 1000 AND skill IS NOT NULL</sql-solution>
-            <sql-placeholder>SELECT * FROM passenger WHERE ...</sql-placeholder>
+            <sql-placeholder>SELECT * FROM passenger WHERE ... AND skill IS NOT NULL</sql-placeholder>
         </select-scene>
         <text-scene>
             <text>Excellent! Marco, Sandra, Lina, Julia, and Aisha take the first class seats. Tomas, Reto, and Niklas settle into second class. The Airbus A320 roars to life and you take off from SQL Island!</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
-            <text>Table: `passenger`
+            <text>Challenge 2: Table: `passenger`
 
-Before serving meals, you need a passenger overview. Count the total number of passengers, how many have a skill, and how many have allergies. Use the FILTER clause! Name the columns: `total`, `with_skill`, `with_allergy`. Hint: the syntax reads FILTER (WHERE ...)</text>
-            <sql-solution>SELECT COUNT(*) AS total, COUNT(*) FILTER (WHERE skill IS NOT NULL) AS with_skill, COUNT(*) FILTER (WHERE allergy IS NOT NULL) AS with_allergy FROM passenger</sql-solution>
-            <sql-placeholder>SELECT COUNT(*) AS total, COUNT(*) FILTER (...) AS with_skill, COUNT(*) FILTER (...) AS with_allergy FROM passenger</sql-placeholder>
+Before serving meals, you need a passenger overview. Count the total number of passengers and how many have allergies. Use the FILTER clause! Name the columns: `total`, `with_allergy`. Hint: the syntax reads FILTER (WHERE ...)</text>
+            <sql-solution>SELECT COUNT(*) AS total, COUNT(*) FILTER (WHERE allergy IS NOT NULL) AS with_allergy FROM passenger</sql-solution>
+            <sql-placeholder>SELECT COUNT(*) AS total, COUNT(*) FILTER (...) AS with_allergy FROM passenger</sql-placeholder>
         </select-scene>
         <text-scene>
             <text>Well done! 5 out of 8 passengers have allergies - that&#x27;s a lot! You start distributing the meals carefully. The pilot Arthur grabs the Salmon Teriyaki from the galley before you can stop him...</text>
@@ -46,18 +46,18 @@ Before serving meals, you need a passenger overview. Count the total number of p
             <text>Arthur collapses! The Salmon Teriyaki contains shellfish, and he&#x27;s severely allergic! The pilot is unconscious. You need to take control of the plane!</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
-            <text>Table: `meal`
+            <text>Challenge 3: Table: `meal`
 Syntax: COUNT(*) FILTER (WHERE condition)
 
-First, check the meal situation on our plane (`planeid` = 1). Count the total meals, how many are safe for everyone (`contains` IS NULL), and how many contain allergens. Use the FILTER clause! Name the columns: `total_meals`, `safe_for_all`, `has_allergens`</text>
-            <sql-solution>SELECT COUNT(*) AS total_meals, COUNT(*) FILTER (WHERE contains IS NULL) AS safe_for_all, COUNT(*) FILTER (WHERE contains IS NOT NULL) AS has_allergens FROM meal WHERE planeid = 1</sql-solution>
+First, check the meal situation on our plane (`plane_id` = 1). Count the total meals, how many are safe for everyone (`contains` IS NULL), and how many contain allergens. Use the FILTER clause! Name the columns: `total_meals`, `safe_for_all`, `has_allergens`</text>
+            <sql-solution>SELECT COUNT(*) AS total_meals, COUNT(*) FILTER (WHERE contains IS NULL) AS safe_for_all, COUNT(*) FILTER (WHERE contains IS NOT NULL) AS has_allergens FROM meal WHERE plane_id = 1</sql-solution>
             <sql-placeholder>SELECT COUNT(*) AS total_meals, COUNT(*) FILTER (...) AS safe_for_all, COUNT(*) FILTER (...) AS has_allergens FROM ...</sql-placeholder>
         </select-scene>
         <text-scene>
             <text>Good thinking! Only 2 out of 4 meals are safe for everyone. You hand those out first. Now you grab the controls. The fuel gauge reads 62.5% - that gives you roughly a 700 km range. You need to find an airport to land!</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
-            <text>Table: `airport`
+            <text>Challenge 4: Table: `airport`
 Syntax: COUNT(*) FILTER (WHERE condition)
 
 Emergency check! Count how many airports are reachable (`distance` &gt; 0 AND `distance` &lt;= 700) versus out of reach (`distance` &gt; 700). Use the FILTER clause! Name the columns: `reachable`, `out_of_reach`</text>
@@ -68,7 +68,7 @@ Emergency check! Count how many airports are reachable (`distance` &gt; 0 AND `d
             <text>Nice work! 5 airports are within range, 2 are too far. But which one is closest? Find the minimum distance before committing to a heading!</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="false">
-            <text>Table: `airport`
+            <text>Challenge 5: Table: `airport`
 Syntax: MIN(column) FILTER (WHERE condition)
 
 Find the `name` and `distance` of the nearest reachable airport (`distance` &gt; 0 AND `distance` &lt;= 700). Hint: use a subquery with MIN() FILTER to match the airport row.</text>
@@ -85,7 +85,7 @@ Find the `name` and `distance` of the nearest reachable airport (`distance` &gt;
             <text>The airline&#x27;s insurance team rushes over with clipboards. They need a financial breakdown of the passengers immediately - specifically how passengers with useful skills compare financially to those without.</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
-            <text>Table: `passenger`
+            <text>Challenge 6: Table: `passenger`
 Syntax: SUM(column) FILTER (WHERE condition), AVG(column) FILTER (WHERE condition)
 
 Calculate the total and average `money` for passengers WITH a skill and for those WITHOUT a skill. Use SUM() and AVG() with the FILTER clause! Name the columns: `skilled_total`, `skilled_avg`, `unskilled_total`, `unskilled_avg`</text>
@@ -96,12 +96,12 @@ Calculate the total and average `money` for passengers WITH a skill and for thos
             <text>Great work! Insurance report submitted. Now the Saint Lucia airport authority wants a fleet-wide meal safety audit. They need to know, for every plane in the fleet, how many meals are allergen-free versus potentially dangerous.</text>
         </text-scene>
         <select-scene is-row-order-relevant="false" is-col-order-relevant="false" are-col-names-relevant="true">
-            <text>Table: `meal`
+            <text>Challenge 7: Table: `meal`
 Syntax: COUNT(*) FILTER (WHERE condition) ... GROUP BY column
 
-For each plane, show the `planeid` and count: total meals, how many are safe for all (`contains` IS NULL), and how many contain allergens (`contains` IS NOT NULL). Use FILTER together with GROUP BY! Name the columns: `planeid`, `total_meals`, `safe_meals`, `allergen_meals`</text>
-            <sql-solution>SELECT planeid, COUNT(*) AS total_meals, COUNT(*) FILTER (WHERE contains IS NULL) AS safe_meals, COUNT(*) FILTER (WHERE contains IS NOT NULL) AS allergen_meals FROM meal GROUP BY planeid ORDER BY planeid</sql-solution>
-            <sql-placeholder>SELECT planeid, COUNT(*) AS total_meals, COUNT(*) FILTER (...) AS safe_meals, COUNT(*) FILTER (...) AS allergen_meals FROM meal GROUP BY planeid ORDER BY planeid</sql-placeholder>
+For each plane, show the `plane_id` and count: total meals, how many are safe for all (`contains` IS NULL), and how many contain allergens (`contains` IS NOT NULL). Use FILTER together with GROUP BY! Name the columns: `plane_id`, `total_meals`, `safe_meals`, `allergen_meals`</text>
+            <sql-solution>SELECT plane_id, COUNT(*) AS total_meals, COUNT(*) FILTER (WHERE contains IS NULL) AS safe_meals, COUNT(*) FILTER (WHERE contains IS NOT NULL) AS allergen_meals FROM meal GROUP BY plane_id ORDER BY plane_id</sql-solution>
+            <sql-placeholder>SELECT plane_id, COUNT(*) AS total_meals, COUNT(*) FILTER (...) AS safe_meals, COUNT(*) FILTER (...) AS allergen_meals FROM meal GROUP BY plane_id ORDER BY plane_id</sql-placeholder>
         </select-scene>
         <text-scene>
             <text>Outstanding! Fleet safety report filed. Arthur makes a full recovery at hospital. The whole crew is hailed as heroes. You&#x27;ve not only escaped SQL Island - you&#x27;ve mastered the FILTER clause! Congratulations, Captain!</text>
@@ -118,7 +118,7 @@ You learned to aggregate selectively and turning a single query into multiple ta
         </text-scene>
     </scenes>
     <initial-sql-script>CREATE TABLE passenger (
-    passengerid SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     money INTEGER NOT NULL CHECK (money &gt;= 0),
     skill TEXT,
@@ -126,32 +126,21 @@ You learned to aggregate selectively and turning a single query into multiple ta
 );
 
 CREATE TABLE plane (
-    planeid SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     model TEXT NOT NULL,
-    fuel_level NUMERIC(5,2) NOT NULL,
-    fuel_min NUMERIC(5,2) NOT NULL,
-    fuel_max NUMERIC(5,2) NOT NULL,
-    altitude INTEGER NOT NULL,
-    altitude_min INTEGER NOT NULL,
-    altitude_max INTEGER NOT NULL,
-    cabin_pressure NUMERIC(4,2) NOT NULL,
-    cabin_pressure_min NUMERIC(4,2) NOT NULL,
-    cabin_pressure_max NUMERIC(4,2) NOT NULL,
-    speed INTEGER NOT NULL,
-    speed_min INTEGER NOT NULL,
-    speed_max INTEGER NOT NULL
+    fuel_level NUMERIC(5,2) NOT NULL
 );
 
 CREATE TABLE meal (
-    mealid SERIAL PRIMARY KEY,
-    planeid INTEGER NOT NULL
-        REFERENCES plane(planeid),
+    id SERIAL PRIMARY KEY,
+    plane_id INTEGER NOT NULL
+        REFERENCES plane(id),
     name TEXT NOT NULL,
     contains TEXT
 );
 
 CREATE TABLE airport (
-    airportid SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     distance INTEGER NOT NULL CHECK (distance &gt;= 0)
 );
@@ -167,13 +156,13 @@ VALUES
 (&#x27;Niklas Stein&#x27;, 1100, NULL, NULL),
 (&#x27;Aisha Mirza&#x27;, 4100, &#x27;electronics&#x27;, &#x27;eggs&#x27;);
 
-INSERT INTO plane (model, fuel_level, fuel_min, fuel_max, altitude, altitude_min, altitude_max, cabin_pressure, cabin_pressure_min, cabin_pressure_max, speed, speed_min, speed_max)
+INSERT INTO plane (model, fuel_level)
 VALUES
-(&#x27;Airbus A320&#x27;, 62.50, 10.00, 100.00, 35000, 20000, 42000, 0.85, 0.75, 1.00, 480, 200, 575),
-(&#x27;Boeing 737&#x27;, 45.30, 10.00, 100.00, 31000, 20000, 41000, 0.82, 0.75, 1.00, 460, 200, 544),
-(&#x27;Embraer E190&#x27;, 78.10, 10.00, 100.00, 28000, 15000, 39000, 0.88, 0.75, 1.00, 430, 180, 510);
+(&#x27;Airbus A320&#x27;, 62.50),
+(&#x27;Boeing 737&#x27;, 45.30),
+(&#x27;Embraer E190&#x27;, 78.10);
 
-INSERT INTO meal (planeid, name, contains)
+INSERT INTO meal (plane_id, name, contains)
 VALUES
 (1, &#x27;Grilled Chicken Wrap&#x27;, &#x27;gluten&#x27;),
 (1, &#x27;Vegetable Curry&#x27;, NULL),

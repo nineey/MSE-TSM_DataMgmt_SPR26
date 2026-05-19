@@ -1,5 +1,5 @@
 CREATE TABLE passenger (
-    passengerid SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     money INTEGER NOT NULL CHECK (money >= 0),
     skill TEXT,
@@ -7,32 +7,21 @@ CREATE TABLE passenger (
 );
 
 CREATE TABLE plane (
-    planeid SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     model TEXT NOT NULL,
-    fuel_level NUMERIC(5,2) NOT NULL,
-    fuel_min NUMERIC(5,2) NOT NULL,
-    fuel_max NUMERIC(5,2) NOT NULL,
-    altitude INTEGER NOT NULL,
-    altitude_min INTEGER NOT NULL,
-    altitude_max INTEGER NOT NULL,
-    cabin_pressure NUMERIC(4,2) NOT NULL,
-    cabin_pressure_min NUMERIC(4,2) NOT NULL,
-    cabin_pressure_max NUMERIC(4,2) NOT NULL,
-    speed INTEGER NOT NULL,
-    speed_min INTEGER NOT NULL,
-    speed_max INTEGER NOT NULL
+    fuel_level NUMERIC(5,2) NOT NULL
 );
 
 CREATE TABLE meal (
-    mealid SERIAL PRIMARY KEY,
-    planeid INTEGER NOT NULL
-        REFERENCES plane(planeid),
+    id SERIAL PRIMARY KEY,
+    plane_id INTEGER NOT NULL
+        REFERENCES plane(id),
     name TEXT NOT NULL,
     contains TEXT
 );
 
 CREATE TABLE airport (
-    airportid SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     distance INTEGER NOT NULL CHECK (distance >= 0)
 );
@@ -48,13 +37,13 @@ VALUES
 ('Niklas Stein', 1100, NULL, NULL),
 ('Aisha Mirza', 4100, 'electronics', 'eggs');
 
-INSERT INTO plane (model, fuel_level, fuel_min, fuel_max, altitude, altitude_min, altitude_max, cabin_pressure, cabin_pressure_min, cabin_pressure_max, speed, speed_min, speed_max)
+INSERT INTO plane (model, fuel_level)
 VALUES
-('Airbus A320', 62.50, 10.00, 100.00, 35000, 20000, 42000, 0.85, 0.75, 1.00, 480, 200, 575),
-('Boeing 737', 45.30, 10.00, 100.00, 31000, 20000, 41000, 0.82, 0.75, 1.00, 460, 200, 544),
-('Embraer E190', 78.10, 10.00, 100.00, 28000, 15000, 39000, 0.88, 0.75, 1.00, 430, 180, 510);
+('Airbus A320', 62.50),
+('Boeing 737', 45.30),
+('Embraer E190', 78.10);
 
-INSERT INTO meal (planeid, name, contains)
+INSERT INTO meal (plane_id, name, contains)
 VALUES
 (1, 'Grilled Chicken Wrap', 'gluten'),
 (1, 'Vegetable Curry', NULL),
